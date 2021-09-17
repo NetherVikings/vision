@@ -89,8 +89,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget bottomSheet() {
-    return DraggableScrollableSheet(
-      builder: (context, scrollController) => Container(
+    return BottomSheet(
+      enableDrag: true,
+      onClosing: () {},
+      builder: (BuildContext context) => Container(
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -99,25 +101,26 @@ class _MyAppState extends State<MyApp> {
             child: Row(
               children: const <Widget>[
                 Expanded(
-                  child: Text('Deliver features faster',
-                      textAlign: TextAlign.center),
+                  child: Icon(
+                    Icons.food_bank,
+                    size: 50,
+                  ),
                 ),
                 Expanded(
-                  child:
-                      Text('Craft beautiful UIs', textAlign: TextAlign.center),
+                  child: Icon(
+                    Icons.person,
+                    size: 50,
+                  ),
                 ),
                 Expanded(
-                  child: FittedBox(
-                    fit: BoxFit.contain, // otherwise the logo will be tiny
-                    child: FlutterLogo(),
+                  child: Icon(
+                    Icons.settings,
+                    size: 50,
                   ),
                 ),
               ],
             ),
           )),
-      initialChildSize: 0.1,
-      minChildSize: 0.1,
-      maxChildSize: 0.4,
     );
   }
 }
