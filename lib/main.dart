@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 
 void main() => runApp(Start());
 
@@ -28,7 +29,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [buildMap(), buildFloatingSearchBar(context), bottomSheet()],
+        children: [
+          buildMap(),
+          buildFloatingSearchBar(context),
+          mybottomSheet()
+        ],
       ),
     );
   }
@@ -88,39 +93,37 @@ class _MyAppState extends State<MyApp> {
         ));
   }
 
-  Widget bottomSheet() {
-    return BottomSheet(
-      enableDrag: true,
-      onClosing: () {},
-      builder: (BuildContext context) => Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-          child: SingleChildScrollView(
-            child: Row(
-              children: const <Widget>[
-                Expanded(
-                  child: Icon(
-                    Icons.food_bank,
-                    size: 50,
-                  ),
-                ),
-                Expanded(
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                  ),
-                ),
-                Expanded(
-                  child: Icon(
-                    Icons.settings,
-                    size: 50,
-                  ),
-                ),
-              ],
+  Widget mybottomSheet() {
+    return ExpandableBottomSheet(
+      persistentHeader: Container(
+        height: 50,
+        color: Colors.white,
+        child: Center(
+          child: Icon(Icons.drag_handle_outlined),
+        ),
+      ),
+      expandableContent: Container(
+        height: 100,
+        color: Colors.white,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => {},
             ),
-          )),
+            IconButton(
+              icon: Icon(Icons.arrow_upward),
+              onPressed: () => {},
+            ),
+            IconButton(
+              icon: Icon(Icons.cloud),
+              onPressed: () => {},
+            )
+          ],
+        ),
+      ),
     );
   }
 }
