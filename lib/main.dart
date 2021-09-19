@@ -106,13 +106,24 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       sheetBelow: SnappingSheetContent(
-        sizeBehavior: SheetSizeStatic(size: 1),
-        draggable: true,
-        child: Container(color: Colors.white60),
-      ),
+          sizeBehavior: SheetSizeStatic(size: 1),
+          draggable: true,
+          child: Container(
+            color: Colors.white60,
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Icon(Icons.food_bank),
+                ),
+                Expanded(child: Icon(Icons.person)),
+                Expanded(child: Icon(Icons.settings))
+              ],
+            ),
+          )),
       grabbingHeight: 40,
       grabbing: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: Colors.white60,
             borderRadius: BorderRadius.only(
