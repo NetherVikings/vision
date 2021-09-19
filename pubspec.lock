@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  draggable_bottom_sheet:
+    dependency: "direct main"
+    description:
+      name: draggable_bottom_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   expandable_bottom_sheet:
     dependency: "direct main"
     description:
@@ -182,6 +189,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  snapping_sheet:
+    dependency: "direct main"
+    description:
+      name: snapping_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   source_span:
     dependency: transitive
     description:

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
+import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
+import 'package:snapping_sheet/snapping_sheet.dart';
 
 void main() => runApp(Start());
 
@@ -94,35 +96,35 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget mybottomSheet() {
-    return ExpandableBottomSheet(
-      persistentHeader: Container(
-        height: 50,
-        color: Colors.white,
-        child: Center(
-          child: Icon(Icons.drag_handle_outlined),
+    return SnappingSheet(
+      snappingPositions: [
+        SnappingPosition.factor(
+          positionFactor: .1,
+          snappingCurve: Curves.bounceOut,
+          snappingDuration: Duration(seconds: 1),
+          grabbingContentOffset: GrabbingContentOffset.top,
         ),
+      ],
+      sheetBelow: SnappingSheetContent(
+        sizeBehavior: SheetSizeStatic(size: 1),
+        draggable: true,
+        child: Container(color: Colors.white60),
       ),
-      expandableContent: Container(
-        height: 100,
-        color: Colors.white,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => {},
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_upward),
-              onPressed: () => {},
-            ),
-            IconButton(
-              icon: Icon(Icons.cloud),
-              onPressed: () => {},
-            )
-          ],
-        ),
+      grabbingHeight: 40,
+      grabbing: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+            color: Colors.white60,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        child: Column(children: <Widget>[
+          Container(
+            width: 40,
+            height: 6,
+            decoration: BoxDecoration(
+                color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+          ),
+        ]),
       ),
     );
   }
