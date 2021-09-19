@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 
 void main() => runApp(Start());
@@ -60,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         FloatingSearchBarAction(
           showIfOpened: false,
           child: CircularButton(
-            icon: const Icon(Icons.place),
+            icon: const Icon(Icons.fastfood_outlined),
             onPressed: () {},
           ),
         ),
@@ -106,24 +104,37 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       sheetBelow: SnappingSheetContent(
-          sizeBehavior: SheetSizeStatic(size: 1),
+          sizeBehavior: SheetSizeStatic(size: 10),
           draggable: true,
           child: Container(
             color: Colors.white60,
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: Icon(Icons.food_bank),
+                  child: CircularButton(
+                    icon: Icon(Icons.food_bank),
+                    onPressed: () {},
+                  ),
                 ),
-                Expanded(child: Icon(Icons.person)),
-                Expanded(child: Icon(Icons.settings))
+                Expanded(
+                  child: CircularButton(
+                    icon: Icon(Icons.person),
+                    onPressed: () {},
+                  ),
+                ),
+                Expanded(
+                  child: CircularButton(
+                    icon: Icon(Icons.settings),
+                    onPressed: () {},
+                  ),
+                )
               ],
             ),
           )),
-      grabbingHeight: 40,
+      grabbingHeight: 20,
       grabbing: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(7),
         decoration: BoxDecoration(
             color: Colors.white60,
             borderRadius: BorderRadius.only(
